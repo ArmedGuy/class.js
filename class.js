@@ -24,10 +24,10 @@ var overload = require('fnoverload');
 				throw new Error("Cannot extend sealed class");
 			
 			var proto = Object.create(baseClass.prototype);
-			if("constructor" in obj) {
-				Object.defineProperty(proto, "constructor", Object.getOwnPropertyDescriptor(obj, "constructor"));
+			if("init" in obj) {
+				Object.defineProperty(proto, "init", Object.getOwnPropertyDescriptor(obj, "init"));
 			} else {
-				Object.defineProperty(proto, "constructor", function() { });
+				Object.defineProperty(proto, "init", function() { });
 			}
 			if('public' in obj) {
 				Object.getOwnPropertyNames(obj.public).forEach(function(propName) {
@@ -39,11 +39,11 @@ var overload = require('fnoverload');
 					Object.defineProperty(proto, propName, Object.getOwnPropertyDescriptor(obj.private, propName));
 				});
 			}
-			var c = proto.constructor || function() { };
+			var c = proto.init || function() { };
 			
 			// static variables
 			Object.getOwnPropertyNames(obj).forEach(function(propName) {
-				if(propName !== "constructor" && propName !== "public" && propName !== "private") {
+				if(propName !== "init" && propName !== "public" && propName !== "private") {
 					Object.defineProperty(c, propName, Object.getOwnPropertyDescriptor(obj, propName));
 				}
 			});

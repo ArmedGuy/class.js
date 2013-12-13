@@ -1,7 +1,7 @@
 var Class = require('./class')
 , events = require('events');
 var Derp = Class.sealed({
-	constructor: function() {
+	init: function() {
 		console.log("hi");
 		Derp.count++;
 	},
@@ -14,10 +14,10 @@ var Derp = Class.sealed({
 	}
 });
 var Herp = Class.extend(Derp, {
-	constructor: function() {
+	init: function() {
 		console.log("ho");
 		Derp.count++;
-		this.base.constructor.call(this);
+		this.base.init.call(this);
 	},
 	public: {
 		test: function(derp) {
