@@ -1,11 +1,10 @@
 var Class = require('./class')
 , events = require('events');
-var Derp = Class({
+var Derp = Class.sealed({
 	constructor: function() {
 		console.log("hi");
 		Derp.count++;
 	},
-	count: 0,
 	public: {
 		test: function(derp) {
 			console.log("lol: " + derp);
@@ -14,7 +13,7 @@ var Derp = Class({
 	private: {
 	}
 });
-var Herp = Class.extends(Derp, {
+var Herp = Class.extend(Derp, {
 	constructor: function() {
 		console.log("ho");
 		Derp.count++;
@@ -25,12 +24,19 @@ var Herp = Class.extends(Derp, {
 			this.emit("lol");
 			console.log("hehe: " + derp);
 			this.base.test.call(this, derp);
+		},
+		toString: function() {
+			return "feggit";
 		}
 	}
 });
-Derp.inherits(events.EventEmitter);
+
+
+/*
+Herp.inherits(events.EventEmitter);
 var b = new Herp();
 b.on("lol", function() {
 	console.log("Making sure it works!");
-});
-b.test("lel");
+});c
+console.log(Class.instanceof(b, Derp) + ": " + b);
+*/

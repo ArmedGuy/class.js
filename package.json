@@ -1,0 +1,36 @@
+{
+  "name": "class.js",
+  "preferGlobal": false,
+  "version": "0.0.1",
+  "author": "Johan Jatko <johan@pie-studios.com>",
+  "description": "Library for psuedo classes in JavaScript",
+  "contributors": [
+    {
+      "name": "Johan Jatko",
+      "email": "johan@pie-studios.com"
+    }
+  ],
+  "main": "./class",
+  "keywords": [
+    "language",
+    "class",
+    "prototype",
+    "public",
+    "private",
+    "sealed",
+    "psuedo",
+    "feature",
+    "pretty"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArmedGuy/class.js.git"
+  },
+  "licence": "MIT",
+  "engines": {
+    "node": ">=0.8"
+  },
+  "dependencies": {
+    "fnoverload": "~1.1.5"
+  }
+}
